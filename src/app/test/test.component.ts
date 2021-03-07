@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-test',
@@ -7,23 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
-  public myid = 'testId'
-  public msg= ''
-  public name = ""
+  @Input() public pData: any;
+  @Output() public childEvent = new EventEmitter();
   constructor() { }
-
-  // clickEvent(event: any){
-  //   console.log(event);
-  //   // this.msg = 'Event function invoked';
-  //   this.msg = event.type;
-  // }
-  // template reference variable
-  // msgMethod(value: string){
-  //   this.msg=`your name is ${value}`
-
-  // }
   
   ngOnInit(): void {
+  }
+
+  fireEvent(){
+    this.childEvent.emit('Hey Codevolution')
   }
 
 }
